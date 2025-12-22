@@ -231,9 +231,6 @@
   .contents {
     display: contents;
   }
-  .flex {
-    display: flex;
-  }
   .grid {
     display: grid;
   }
@@ -257,9 +254,6 @@
   }
   .border-collapse {
     border-collapse: collapse;
-  }
-  .resize {
-    resize: both;
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -346,9 +340,6 @@
   }
   .uppercase {
     text-transform: uppercase;
-  }
-  .underline {
-    text-decoration-line: underline;
   }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
