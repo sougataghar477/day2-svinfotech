@@ -5,7 +5,7 @@ $isAdminLoggedIn=isset($_SESSION['admin_id'])?'<form method="POST" action="/logo
 $html;
 echo '
 <nav class="mx-auto max-w-200 p-4 flex   justify-between w-full items-center rounded-lg">
-<span class=""text-3xl>User Feedback</span>'.$isAdminLoggedIn.'
+<span class="text-3xl">User Feedback</span>'.$isAdminLoggedIn.'
 
 </nav>
 <div class="mx-auto max-w-200 p-4 min-h-screen grid place-items-center">
