@@ -10,7 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         json_encode(["status" => "error", "message" =>"All fields are required"]);
     }   
     // Connect to MySQL
-    $conn = new mysqli("localhost", "root", "", "userfeedback");
+        $conn = new mysqli(
+    "sql111.infinityfree.com",
+    "if0_40745702",
+    "Lde3v7vF3XwHcc4",
+    "if0_40745702_userfeedbacks",
+    3306
+);
 
     if ($conn->connect_error) {
         // Connection failed → return JSON error and stop execution

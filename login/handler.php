@@ -9,7 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $conn = new mysqli("localhost", "root", "", "userfeedback");
+        $conn = new mysqli(
+    "sql111.infinityfree.com",
+    "if0_40745702",
+    "Lde3v7vF3XwHcc4",
+    "if0_40745702_userfeedbacks",
+    3306
+);
 
     if ($conn->connect_error) {
         echo json_encode(["status" => "error", "message" => $conn->connect_error]);
