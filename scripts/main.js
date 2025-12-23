@@ -20,7 +20,7 @@ function showErrorMessage(field){
             field.nextElementSibling.textContent="Field must not be empty";
         }
         else{
-            field.nextElementSibling.textContent="";
+            field?.nextElementSibling.textContent="";
         }
         if(field?.type ==="textarea" && field?.value.length<20 && field.value !==""){
             field.nextElementSibling.textContent="Message must not be less than 20 characters";
@@ -53,7 +53,7 @@ function submitMessage(event){
 submitFormBtn?.addEventListener("click",()=>{
     isFormSubmitted = true;
     console.log(isFormSubmitted);
-    [nameInput,emailInput,subjectInput,messageInput].forEach(field =>{
+    [nameInput,emailInput,subjectInput,messageInput]?.forEach(field =>{
     showErrorMessage(field)
 });
     setTimeout(() => {
@@ -75,6 +75,9 @@ function submitAdminLogin(event){
         .then(d => {
             if(d.status==="success"){
                window.location.href = "../dashboard";
+            }
+            else{
+                console.error("Error somewhere")
             }
         })
         
