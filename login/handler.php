@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($email) || empty($password)) {
         echo json_encode(["status" => "error", "message" => "Email and password are required"]);
-        exit;
+         
     }
 
 $conn = new mysqli(
@@ -22,7 +22,7 @@ $conn = new mysqli(
 
     if ($conn->connect_error) {
         echo json_encode(["status" => "error", "message" => $conn->connect_error]);
-        exit;
+         
     }
 
     $stmt = $conn->prepare(
@@ -42,13 +42,13 @@ $conn = new mysqli(
             "status" => "success",
             "message" => "Login successful"
         ]);
-        exit;
+         
 
     } else {
         echo json_encode([
             "status" => "error",
             "message" => "Invalid email or password"
         ]);
-        exit;
+         
     }
 }
