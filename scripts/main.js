@@ -72,7 +72,6 @@ function submitMessage(event) {
     .then(data => {
         if (data.status === "success") {
             alert(data.message);
-            event.target.reset();
         } else {
             alert(data.message);
         }

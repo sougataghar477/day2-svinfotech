@@ -20,10 +20,11 @@ if (!$full_name || !$email || !$subject || !$message) {
 }
 
 $conn = new mysqli(
-    "sql111.infinityfree.com",
-    "if0_40745702",
-    "Lde3v7vF3XwHcc4",
-    "if0_40745702_userfeedbacks"
+    "db.fr-pari1.bengt.wasmernet.com",
+    "a890400970b4800092c62a05eeea",
+    "0694a890-4009-71fc-8000-31acc0d66b54",
+    "userfeedbacks",
+    "10272"
 );
 
 if ($conn->connect_error) {
