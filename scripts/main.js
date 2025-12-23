@@ -108,7 +108,7 @@ function submitAdminLogin(event) {
         .then(r => r.json())
         .then(d => {
             if (d.status === "success") {
-                window.location.href = "/dashboard/";
+                window.location.href = "../dashboard/";
             } else {
                 console.error("Login failed");
             }
