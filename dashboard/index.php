@@ -54,7 +54,7 @@ $conn = new mysqli(
         $searchQuery = isset($_GET['query']) ? trim($_GET['query']) : '';
         $feedbacks = '';
         
-        
+        //if search query isnt empty
         if ($searchQuery !== "") {
             
             $filtered_data = array_filter($data,function($feedback){
@@ -65,6 +65,7 @@ $conn = new mysqli(
                     return $feedback;
                 }
             });
+            //If search contains results
             if(count($filtered_data)>0){
                 foreach ($filtered_data as $feedback){
                     $feedbacks .='
@@ -84,6 +85,7 @@ $conn = new mysqli(
                     ';
                 }
             }
+            // if search doesnt have results
             else{
                 $feedbacks = '<tr>
                     <td colspan="6" class="text-center py-4 text-gray-600">
@@ -92,6 +94,7 @@ $conn = new mysqli(
                 </tr>';
             }
         } 
+        //if search query is empty
         else {
             foreach ($data as $feedback) {
                 $feedbacks .= '<tr>
