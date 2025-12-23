@@ -68,15 +68,21 @@ function submitMessage(event) {
         method: "POST",
         body: data
     })
-        .then(r => r.json())
-        .then(d => {
-            alert("Form submitted successfully!");
-        })
-        .catch(error => {
-            console.error(error);
-            alert("Something went wrong!");
-        });
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert(data.message);
+            event.target.reset();
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Server error");
+    });
 }
+
 
 // Submit button validation
 if (submitFormBtn) {
