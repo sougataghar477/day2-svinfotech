@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -11,7 +14,7 @@ $email     = trim($_POST['email'] ?? '');
 $subject   = trim($_POST['subject'] ?? '');
 $message   = trim($_POST['message'] ?? '');
 
-if (empty($full_name) || empty($email) || empty($subject) || empty($message)) {
+if (!$full_name || !$email || !$subject || !$message) {
     echo json_encode(["status" => "error", "message" => "All fields are required"]);
     exit;
 }
@@ -20,31 +23,38 @@ $conn = new mysqli(
     "sql111.infinityfree.com",
     "if0_40745702",
     "Lde3v7vF3XwHcc4",
-    "if0_40745702_userfeedbacks",
-    3306
+    "if0_40745702_userfeedbacks"
 );
 
 if ($conn->connect_error) {
-    echo json_encode(["status" => "error", "message" => "Database connection failed"]);
+    echo json_encode([
+        "status" => "error",
+        "message" => $conn->connect_error
+    ]);
     exit;
 }
 
 $stmt = $conn->prepare(
-    "INSERT INTO feedbacks (full_name, email, subject, message) VALUES (?, ?, ?, ?)"
+    "INSERT INTO feedbacks (full_name, email, subject, message)
+     VALUES (?, ?, ?, ?)"
 );
 
 if (!$stmt) {
-    echo json_encode(["status" => "error", "message" => "Prepare failed"]);
+    echo json_encode([
+        "status" => "error",
+        "message" => $conn->error
+    ]);
     exit;
 }
 
 $stmt->bind_param("ssss", $full_name, $email, $subject, $message);
 
-if ($stmt->execute()) {
-    echo json_encode(["status" => "success", "message" => "Feedback submitted"]);
-} else {
-    echo json_encode(["status" => "error", "message" => "Insert failed"]);
+if (!$stmt->execute()) {
+    echo json_encode([
+        "status" => "error",
+        "message" => $stmt->error
+    ]);
+    exit;
 }
 
-$stmt->close();
-$conn->close();
+echo json_encode(["status" => "success", "message" => "Feedback submitted"]);
