@@ -1,4 +1,6 @@
 <?php
+session_start(); 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $email = trim($_POST['email'] ?? '');
@@ -9,22 +11,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-        $conn = new mysqli(
-    "sql111.infinityfree.com",
-    "if0_40745702",
-    "Lde3v7vF3XwHcc4",
-    "if0_40745702_userfeedbacks",
-    3306
-);
+    $conn = new mysqli(
+        "sql111.infinityfree.com",
+        "if0_40745702",
+        "Lde3v7vF3XwHcc4",
+        "if0_40745702_userfeedbacks",
+        3306
+    );
 
     if ($conn->connect_error) {
         echo json_encode(["status" => "error", "message" => $conn->connect_error]);
         exit;
     }
 
-    //
     $stmt = $conn->prepare(
-        "SELECT * FROM users WHERE email = ? AND password = ?"
+        "SELECT id FROM users WHERE email = ? AND password = ?"
     );
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
@@ -32,15 +33,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows === 1) {
+
+         
+        $_SESSION['admin_id'] = true;
+
         echo json_encode([
             "status" => "success",
             "message" => "Login successful"
         ]);
+        exit;
+
     } else {
         echo json_encode([
             "status" => "error",
             "message" => "Invalid email or password"
         ]);
+        exit;
     }
 }
-?>
