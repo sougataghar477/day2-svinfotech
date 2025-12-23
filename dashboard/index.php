@@ -73,7 +73,7 @@ $conn = new mysqli(
                         <td class="border border-gray-300 px-4 py-2">'.$feedback['email'].'</td>
                         <td class="border border-gray-300 px-4 py-2">'.$feedback['subject'].'</td>
                         <td class="border border-gray-300 px-4 py-2">'.$feedback['message'].'</td>
-                        <td class="border border-gray-300 px-4 py-2">'.$feedback['submitted_at'].'</td>
+                        <td class="border border-gray-300 px-4 py-2">'.$feedback['created_at'].'</td>
                         <td class="border border-gray-300 px-4 py-2">
                             <form method="POST" onsubmit="return confirm(\'Delete this feedback?\')">
                                 <input type="hidden" name="delete_id" value="'.$feedback['id'].'">
