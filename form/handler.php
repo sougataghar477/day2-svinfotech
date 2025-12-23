@@ -24,7 +24,7 @@ $conn = new mysqli(
     "a890400970b4800092c62a05eeea",
     "0694a890-4009-71fc-8000-31acc0d66b54",
     "userfeedbacks",
-    "10272"
+    10272
 );
 
 
