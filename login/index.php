@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,8 @@
 
 <body>
 <?php
-$html = '
+$isAdminLoggedIn=isset($_SESSION['admin_id']);
+$html = !$isAdminLoggedIn?'
 
 <div class="max-w-80 rounded-xl shadow-2xl p-4 md:p-8 w-full">
         <h1 class="font-black text-3xl">Admin Login</h1>
@@ -29,7 +33,7 @@ $html = '
 
 </div>
 
-';
+':'<h1 class="text-3xl">You are already logged in.</h1>';
 include "../container.php";
 ?>
  
