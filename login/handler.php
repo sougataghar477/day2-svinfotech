@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 $conn = new mysqli(
-    "db.fr-pari1.bengt.wasmernet.com",      
-    "a890400970b4800092c62a05eeea",          
-    "0694a890-4009-71fc-8000-31acc0d66b54",  
-    "userfeedbacks",                        
-    10272                                  
+    "db.fr-pari1.bengt.wasmernet.com",
+    "a890400970b4800092c62a05eeea",
+    "0694a890-4009-71fc-8000-31acc0d66b54",
+    "userfeedbacks",
+    10272
 );
 
 
