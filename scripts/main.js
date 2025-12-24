@@ -23,7 +23,7 @@ console.log(isFormSubmitted);
 });
 
 function showErrorMessage(field) {
-    isFormSubmitted = true;
+    // isFormSubmitted = true;
 
     if (!field) {
         return
@@ -69,7 +69,7 @@ function showErrorMessage(field) {
 
 function submitMessage(event) {
     event.preventDefault();
-
+    
     let data = new FormData(event.target);
 
     fetch("../form/handler.php", {
@@ -103,9 +103,9 @@ if (submitFormBtn) {
             }
         });
 
-        setTimeout(() => {
-            isFormSubmitted = false;
-        }, 2000);
+        // setTimeout(() => {
+        //     isFormSubmitted = false;
+        // }, 2000);
     });
 }
 
