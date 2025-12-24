@@ -25,20 +25,25 @@ console.log(isFormSubmitted);
 function showErrorMessage(field) {
     isFormSubmitted = true;
 
-    if (!field) return;
+    if (!field) {
+        return
+    };
 
     let errorEl = field.nextElementSibling;
-    if (!errorEl) return;
+    if (!errorEl){ 
+        return
 
-    // Empty field check
+    };
+    if(isFormSubmitted){
     if (field.value === "") {
         errorEl.textContent = "Field must not be empty";
         return;
-    } else {
+    } 
+    else {
         errorEl.textContent = "";
     }
 
-    // Message length check (textarea)
+    // message length check
     if (
         field.tagName === "TEXTAREA" &&
         field.value.length < 20 &&
@@ -48,7 +53,7 @@ function showErrorMessage(field) {
         return;
     }
 
-    // Email validation
+    // email validation
     if (
         field.type === "email" &&
         field.value !== "" &&
@@ -56,7 +61,10 @@ function showErrorMessage(field) {
     ) {
         errorEl.textContent = "Invalid Email";
         return;
+    }  
     }
+    // empty field check
+
 }
 
 function submitMessage(event) {
@@ -90,7 +98,9 @@ if (submitFormBtn) {
         console.log(isFormSubmitted);
 
         [nameInput, emailInput, subjectInput, messageInput].forEach(field => {
-            if (field) showErrorMessage(field);
+            if (field) {
+                showErrorMessage(field);
+            }
         });
 
         setTimeout(() => {
